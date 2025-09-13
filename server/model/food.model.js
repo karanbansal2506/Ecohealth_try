@@ -6,18 +6,19 @@ const mealSchema=new Schema
   user: {type:Schema.Types.ObjectId,ref:User},
 
   items: [{
+    //todo rating 
     foodName: String,
     quantityGrams: Number,
-    nutrition: Object,
-
-  }],
-  totals: {
-    calories: Number,
+    nutrition: {
     protein: Number,
     carbs: Number,
     fat: Number,
+    
    
-  }
+  },
+  calories: Number,
+
+  }]
 
 },  {
     timestamps:true
