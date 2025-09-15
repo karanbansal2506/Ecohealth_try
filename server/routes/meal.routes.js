@@ -1,7 +1,9 @@
 import { Router } from "express";
-import { login, register } from "../controllers/user.controller";
-const mealRouter=Router()
 
+import { nutritionData } from "../controllers/meal.controller.js";
+import upload from "../middlewares/multer.middleware.js";
+const mealRouter=Router()
+mealRouter.route("/nutrition").post(upload.single("meal"),nutritionData)
 
 
 
