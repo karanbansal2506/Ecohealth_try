@@ -5,7 +5,7 @@ const register =async(req,res,next)=>{
  if(!username ||! email || !password){
     return next( new AppError("all fields are reuired",400))
 }
-const userExists=await User.findOne({
+const userExists=await userModel.findOne({
     email
 })
 if(userExists){
@@ -20,11 +20,12 @@ if(!user ){
 }
 await user.save();
 const token =await user.generateJWTToken()
-res.cookie("token",token,cookieOptions)
+
 res.status(200).json({
     success:true,
     message:"User registered successfully",
-    user
+    user,
+    token
 })
 }
 
@@ -39,11 +40,11 @@ if(!user || !user.comparePassword(password)){
 }
 const token=await user.generateJWTToken()
 user.password=undefined();
-res.cookie("token",token,cookieOptions)
+
 res.status(200).json({
     success:true,
     message:"User logged in  successfully",
-    user
+    user,token
 })}catch(e){
 
     return next(new AppError(e.message,500));
