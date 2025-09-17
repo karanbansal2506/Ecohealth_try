@@ -10,6 +10,7 @@ import LoginPage from "./component/LoginPage";
 import Navbar from "./component/Navbar";
 
 import CarbonFootprintCalculator from "./component/carbonCalculate";
+import NutritionScanner from "./component/UploadPage";
 
 export default function App() {
   const [page, setPage] = useState("landing");
@@ -49,7 +50,7 @@ export default function App() {
         />
       )}
       {page === "home" && <Home user={user} />}
-      {page === "upload" && <UploadPage />}
+      {page === "upload" && <NutritionScanner />}
       {page === "analysis" && <AnalysisPage />}
       {page === "profile" && <ProfilePage user={user} setUser={setUser} />}
       {page === "carbon Calculator" && <CarbonFootprintCalculator />}

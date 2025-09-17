@@ -4,6 +4,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai"; // Use the correct, modern package
 import * as fs from "node:fs";
 import path from "path";
+import { prompt } from "../config/prompt.js";
 
 const nutritionData = async (req, res) => {
     if (!req.file) {
@@ -24,13 +25,13 @@ const nutritionData = async (req, res) => {
             },
         };
 
-        const prompt = "Analyze the food in this image and provide an estimated nutritional breakdown, including calories, protein, carbohydrates, and fat.";
+        // const prompt = "Analyze the food in this image and provide an estimated nutritional breakdown, including calories, protein, carbohydrates, and fat.";
         
         const result = await model.generateContent([prompt, imagePart]);
         const response = result.response;
         const text = response.text();
         
-        // Clean up the uploaded file
+        // Clean up the uploaded file 
         fs.unlinkSync(imagePath);
 
         res.status(200).json({ nutritionInfo: text });
