@@ -12,7 +12,7 @@ if(userExists){
       return next( new AppError("user alreday exists",400))
 }
 const  user =await userModel.create({
-    fullname,email,password,
+    username,email,password,
     
 })
 if(!user ){
@@ -20,7 +20,7 @@ if(!user ){
 }
 await user.save();
 const token =await user.generateJWTToken()
-
+console.log(token);
 res.status(200).json({
     success:true,
     message:"User registered successfully",
@@ -34,7 +34,7 @@ const login=async(req,res,next)=>{
 if(!fullname ||! email || !password){
     return next( new AppError("all fields are reuired",400))
 }
-const user=await User.findOne({email}).select("+password");
+const user=await userModel.findOne({email}).select("+password");
 if(!user || !user.comparePassword(password)){
     return next (new AppError("email or password does not match ",40))
 }

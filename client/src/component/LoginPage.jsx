@@ -3,10 +3,23 @@ import React, { useState } from "react";
 export default function LoginPage({ onBack, onSwitch, onSuccess }) {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    // for now we only use email to greet
-    onSuccess({ name: "User", email });
+try{ const response =await axios.post("http://localhost:5000/api/v1/user/register",{
+    username:name,
+    email,password
+  })
+
+alert("You have been signed up")
+   const jwt=response.data.token
+ localStorage.setItem("authorization",jwt)  
+    
+    
+    
+    onSuccess({ name, email }); // send user data to App
+  }catch(e){
+    console.log("error occured in signup",e)
+  }
   };
 
   return (

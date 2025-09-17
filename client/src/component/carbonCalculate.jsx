@@ -26,7 +26,7 @@ const CarbonFootprintCalculator = () => {
 
         try {
             // Make API call to the backend
-            const response = await axios.post('http://localhost:5000/api/calculate', {
+            const response = await axios.post('http://localhost:5000/api/v1/carbon/calculate', {
                 activity: activity,
                 value: parseFloat(value), // Ensure value is a number
             });

@@ -41,4 +41,6 @@ const nutritionData = async (req, res) => {
     }
 };
 
+
+
 export { nutritionData };

@@ -6,17 +6,19 @@ export default function SignupPage({ onBack, onSwitch, onSuccess }) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
 
 try
-  { const response =axios.post("http://localhost:5000/api/v1/user/register",{
+  {
+     const response = await axios.post("http://localhost:5000/api/v1/user/register",{
     username:name,
     email,password
   })
 
 alert("You have been signed up")
-  
+   const jwt=response.data.token
+ localStorage.setItem("authorization",jwt)  
     
     
     
