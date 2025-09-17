@@ -2,22 +2,25 @@ import React from "react";
 
 export default function LandingPage({ onGetStarted, onSignIn }) {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-radial-[at_25%_25%] from-white to-zinc-900 to-75%">
-      <h1 className="text-4xl font-bold mb-4">EcoHealth Tracker</h1>
-      <p className="mb-6 text-gray-600 max-w-md text-center">
-        Upload meal photos, get instant nutrition insights, and track your
-        environmental impact.
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-100 to-green-200 px-4 text-center">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-green-700">
+        EcoHealth Tracker
+      </h1>
+      <p className="text-gray-700 max-w-lg mb-8 text-sm sm:text-base">
+        Track your health, analyze data, and make eco-friendly lifestyle
+        choices. Accessible anytime, anywhere.
       </p>
-      <div className="flex gap-4">
+
+      <div className="flex flex-col sm:flex-row gap-4">
         <button
-          className="px-6 py-3 bg-[#13343b] text-white rounded-lg shadow hover:bg-[#13343b]"
           onClick={onGetStarted}
+          className="px-6 py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition"
         >
           Get Started
         </button>
         <button
-          className="px-6 py-3 bg-white border border-gray-300 rounded-lg shadow hover:bg-gray-100"
           onClick={onSignIn}
+          className="px-6 py-3 bg-white border border-green-600 text-green-700 rounded-lg shadow hover:bg-green-50 transition"
         >
           Sign In
         </button>

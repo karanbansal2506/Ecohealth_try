@@ -1,28 +1,66 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
 export default function SignupPage({ onBack, onSwitch, onSuccess }) {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
   const handleSubmit = (e) => {
-    e.preventDefault(); // stop refresh
-    onSuccess(); // navigate to dashboard
+    e.preventDefault();
+
+try
+  { const response =axios.post("http://localhost:5000/api/v1/user/register",{
+    username:name,
+    email,password
+  })
+
+alert("You have been signed up")
+  
+    
+    
+    
+    onSuccess({ name, email }); // send user data to App
+  }catch(e){
+    console.log("error occured in signup",e)
+  }
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-radial-[at_25%_25%] from-white to-zinc-900 to-75%">
-      <h2 className="text-2xl font-bold mb-4">Signup Page</h2>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-blue-50 px-4">
+      <div className="w-full max-w-md bg-white p-6 rounded-xl shadow">
+        <h2 className="text-2xl font-bold mb-6 text-center text-blue-700">Sign Up</h2>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-72">
-        <input type="text" placeholder="Full Name" className="p-2 border rounded" required />
-        <input type="email" placeholder="Email" className="p-2 border rounded" required />
-        <input type="password" placeholder="Password" className="p-2 border rounded" required />
-        <button type="submit" className="bg-[#13343b] text-white py-2 rounded">
-          Sign Up
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="p-2 border rounded"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="p-2 border rounded"
+            required
+          />
+          <input type="password" placeholder="Password" className="p-2 border rounded"   onChange={(e) => setPassword(e.target.value)} required />
+          <button   type="submit" className="bg-green-600 text-white py-2 rounded hover:bg-green-700">
+            Create Account
+          </button>
+        </form>
+
+        <button onClick={onSwitch} className="mt-4 text-blue-600 underline text-sm">
+          Already have an account? Login
         </button>
-      </form>
-
-      <button onClick={onSwitch} className="mt-4 text-blue-950 underline">
-        Already have an account? Login
-      </button>
-
+        <button onClick={onBack} className="mt-2 w-full py-2 bg-gray-200 rounded">
+          Back
+        </button>
+      </div>
     </div>
   );
 }

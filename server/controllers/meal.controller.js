@@ -1,6 +1,9 @@
-// The corrected import statement
-import { GoogleGenAI } from "@google/genai";
+
+
+
+import { GoogleGenerativeAI } from "@google/generative-ai"; // Use the correct, modern package
 import * as fs from "node:fs";
+import path from "path";
 
 const nutritionData = async (req, res) => {
     if (!req.file) {
@@ -8,11 +11,11 @@ const nutritionData = async (req, res) => {
     }
 
     try {
-        // Use the correct class name 'GoogleGenAI'
-        const genAI = new GoogleGenAI(process.env.GEMINI_API_KEY);
+        // Initialize with the correct class and your .env API key
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-        const imagePath = `uploads/${req.file.filename}`;
+        const imagePath = path.join(process.cwd(), 'uploads', req.file.filename);
         
         const imagePart = {
             inlineData: {
@@ -21,13 +24,14 @@ const nutritionData = async (req, res) => {
             },
         };
 
-        const prompt = "Analyze the food in this image and provide an estimated nutritional breakdown (calories, protein, carbs, fat).";
+        const prompt = "Analyze the food in this image and provide an estimated nutritional breakdown, including calories, protein, carbohydrates, and fat.";
         
         const result = await model.generateContent([prompt, imagePart]);
         const response = result.response;
         const text = response.text();
         
-        console.log(text);
+        // Clean up the uploaded file
+        fs.unlinkSync(imagePath);
 
         res.status(200).json({ nutritionInfo: text });
 
