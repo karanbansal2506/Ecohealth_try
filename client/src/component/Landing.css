@@ -1,0 +1,30 @@
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.bg-animated {
+  background: linear-gradient(270deg, #bbf7d0, #86efac, #d9f99d, #bef264, #34d399);
+  background-size: 800% 800%;
+  animation: gradientMove 18s ease infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp {
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+.delay-200 { animation-delay: 0.2s; }
+.delay-400 { animation-delay: 0.4s; }

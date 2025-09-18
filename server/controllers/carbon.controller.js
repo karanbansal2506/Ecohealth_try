@@ -1,6 +1,6 @@
 const emissionFactors = {
     driving: 0.21,    // kg CO2e per km
-    electricity: 0.93, // kg CO2e per kWh (example factor, can vary by region)
+    electricityusage: 0.93, // kg CO2e per kWh (example factor, can vary by region)
     flying: 0.25,      // kg CO2e per km
     // Add more activities and their factors as needed
 };
