@@ -58,7 +58,7 @@ export default function NutritionScanner() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/user/meal/nutrition",
+        "https://ecohealth-emmk.onrender.com//api/v1/user/meal/nutrition",
         formData,
         {
           headers: {
