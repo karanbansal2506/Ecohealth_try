@@ -11,7 +11,7 @@ export default function SignupPage({ onBack, onSwitch, onSuccess }) {
 
 try
   {
-     const response = await axios.post("https://ecohealth-emmk.onrender.com//api/v1/user/register",{
+     const response = await axios.post("https://ecohealth-emmk.onrender.com/api/v1/user/register",{
     username:name,
     email,password
   })

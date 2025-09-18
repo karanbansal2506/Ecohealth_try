@@ -5,7 +5,7 @@ export default function LoginPage({ onBack, onSwitch, onSuccess }) {
 
   const handleSubmit =async (e) => {
     e.preventDefault();
-try{ const response =await axios.post("https://ecohealth-emmk.onrender.com//api/v1/user/register",{
+try{ const response =await axios.post("https://ecohealth-emmk.onrender.com/api/v1/user/register",{
     username:name,
     email,password
   })
