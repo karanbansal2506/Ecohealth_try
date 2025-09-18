@@ -9,12 +9,12 @@ import { prompt } from "../config/prompt.js";
 const nutritionData = async (req, res) => {
     if (!req.file) {
         return res.status(400).send("No file uploaded.");
-    }
+    } 
 
     try {  
         // Initialize with the correct class and your .env API key
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY );
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
         const imagePath = path.join(process.cwd(), 'uploads', req.file.filename);
         
