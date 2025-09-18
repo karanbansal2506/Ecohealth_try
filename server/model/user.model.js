@@ -43,12 +43,9 @@ userSchema.methods={
             id:this._id
         },process.env.JWT_SECRET|| "aiufhvhbauvauv")
     },
-    comparePassword:async (password)=>{
+    comparePassword:async function(password){
        return await  bcrypt.compare(password,this.password)
     },
-
-  
-
 }
 const userModel=model('User', userSchema)
 export default userModel

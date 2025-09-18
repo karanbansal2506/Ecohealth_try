@@ -20,6 +20,7 @@ if(!user ){
 }
 await user.save();
 const token =await user.generateJWTToken()
+ user.password = undefined;
 console.log(token);
 res.status(200).json({
     success:true,
@@ -31,15 +32,15 @@ res.status(200).json({
 
 const login=async(req,res,next)=>{
  try{   const {email,password}=req.body;
-if(!fullname ||! email || !password){
-    return next( new AppError("all fields are reuired",400))
+if(! email || !password){
+    return next( new AppError("all fields are required",400))
 }
 const user=await userModel.findOne({email}).select("+password");
-if(!user || !user.comparePassword(password)){
-    return next (new AppError("email or password does not match ",40))
+if(!user || !(await user.comparePassword(password))){
+    return next (new AppError("email or password does not match ",400))
 }
 const token=await user.generateJWTToken()
-user.password=undefined();
+user.password=undefined;
 
 res.status(200).json({
     success:true,

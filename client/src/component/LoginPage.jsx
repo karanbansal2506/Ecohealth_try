@@ -5,18 +5,16 @@ export default function LoginPage({ onBack, onSwitch, onSuccess }) {
 
   const handleSubmit =async (e) => {
     e.preventDefault();
-try{ const response =await axios.post("http://localhost:5000/api/v1/user/register",{
-    username:name,
+try{ const response =await axios.post("http://localhost:5000/api/v1/user/login",{
     email,password
   })
 
-alert("You have been signed up")
+alert("You have been logged in")
    const jwt=response.data.token
  localStorage.setItem("authorization",jwt)  
     
     
-    
-    onSuccess({ name, email }); // send user data to App
+    onSuccess({ email }); // send user data to App
   }catch(e){
     console.log("error occured in signup",e)
   }
