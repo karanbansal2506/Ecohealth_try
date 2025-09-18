@@ -13,8 +13,8 @@ export default function Navbar({ setPage }) {
 
   return (
     <nav className="  bg-green-600 text-white shadow-md">
-      <div className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+      <div className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
+        <div className="flex justify-between h-16 items-center"> 
           <div
             onClick={() => setPage("landing")}
             className="cursor-pointer text-lg sm:text-xl font-bold flex items-center gap-2"

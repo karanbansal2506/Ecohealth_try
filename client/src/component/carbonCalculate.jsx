@@ -35,6 +35,17 @@ const activityConfig = {
             'lpg': { name: 'LPG', unit: 'litres' },
         },
     },
+    food: {
+        name: 'Food',
+        activities: {
+            'food_high_meat': { name: 'High Meat-eater', unit: 'days' },
+            'food_medium_meat': { name: 'Average Meat-eater', unit: 'days' },
+            'food_low_meat': { name: 'Low Meat-eater', unit: 'days' },
+            'food_pescatarian': { name: 'Pescatarian', unit: 'days' },
+            'food_vegetarian': { name: 'Vegetarian', unit: 'days' },
+            'food_vegan': { name: 'Vegan', unit: 'days' },
+        }
+    }
 };
 
 const CarbonFootprintCalculator = () => {
@@ -145,7 +156,7 @@ const CarbonFootprintCalculator = () => {
                                 id="value"
                                 value={value}
                                 onChange={(e) => setValue(e.target.value)}
-                                placeholder={`Enter distance in ${currentUnit}...`}
+                                placeholder={`Enter amount in ${currentUnit}...`}
                                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                                 min="0"
                                 step="any"

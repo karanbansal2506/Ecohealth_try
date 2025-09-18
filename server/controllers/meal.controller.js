@@ -2,7 +2,7 @@
 
 
 import { GoogleGenerativeAI } from "@google/generative-ai"; // Use the correct, modern package
-import * as fs from "node:fs";
+import * as fs from "node:fs";   
 import path from "path"; 
 import { prompt } from "../config/prompt.js";
 
