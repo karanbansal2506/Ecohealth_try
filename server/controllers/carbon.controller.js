@@ -17,6 +17,7 @@ const emissionFactors = {
     const lowerCaseActivity = activity.toLowerCase();
 
     // Check if the activity is supported and has an emission factor
+    console.log(emissionFactors[lowerCaseActivity])
     if (!emissionFactors[lowerCaseActivity]) {
         return res.status(400).json({ message: `Unknown activity: ${activity}. Please select a supported activity.` });
     }
