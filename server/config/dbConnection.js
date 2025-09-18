@@ -5,8 +5,8 @@ const connectToDb=async()=>{
     if(connection){
         console.log(`connect to MongoD :  ${connection.host} `)
     }} catch(e){
-        console.log( "db connection failed", e);
-        process.exit(1);
+        console.log( "db connection failed", e); 
+        process.exit(1); 
     }
-}
+} 
 export default connectToDb

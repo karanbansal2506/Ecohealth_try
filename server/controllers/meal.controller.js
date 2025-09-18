@@ -3,7 +3,7 @@
 
 import { GoogleGenerativeAI } from "@google/generative-ai"; // Use the correct, modern package
 import * as fs from "node:fs";
-import path from "path";
+import path from "path"; 
 import { prompt } from "../config/prompt.js";
 
 const nutritionData = async (req, res) => {
@@ -11,9 +11,9 @@ const nutritionData = async (req, res) => {
         return res.status(400).send("No file uploaded.");
     }
 
-    try {
+    try {  
         // Initialize with the correct class and your .env API key
-        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY );
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
         const imagePath = path.join(process.cwd(), 'uploads', req.file.filename);

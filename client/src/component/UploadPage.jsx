@@ -55,10 +55,10 @@ export default function NutritionScanner() {
     const formData = new FormData();
     // IMPORTANT: The key "meal" must match your multer upload key on the backend
     formData.append("meal", file);
-
+ 
     try {
       const response = await axios.post(
-        "https://ecohealth-emmk.onrender.com/api/v1/user/meal/nutrition",
+        "http://localhost:5000/api/v1/user/meal/nutrition",
         formData,
         {
           headers: {
